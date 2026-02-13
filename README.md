@@ -28,22 +28,16 @@ All data files are organized within the `dataset/` directory. The benchmark cons
 * **`label_title_fewshot.csv`**: Combined results for Few-Shot testing. Includes both human and machine labels but excludes the 24 fixed exemplars used in prompts. (Value `2` = High Consensus, `1` = Edge Case).
 * **`label_title_zeroshot.csv`**: The complete benchmark results for all 3,041 samples used in Zero-Shot testing. (Value `2` = High Consensus, `1` = Edge Case).
 
----
-
 ### 2. Ethical Evaluation (`ethics/`)
 This folder contains the results of the Machine Ethics Audit.
 * **`ethics_out.csv`**: Detailed ethical audit results for the 2,500 machine-labeled samples.
 * **`risk_posts.csv`**: A subset of 391 samples identified by the model as potentially high-risk, flagged for manual human review.
-
----
 
 ### 3. Evaluation & Results
 * **`check_csvs_fewshot/` & `check_csvs_zeroshot/`**: Reference "Answer Keys" categorized by different dimensions. These are used to compare model outputs against the gold standard.
 * **`DATA_SPLIT/`**: A small-scale, balanced subset provided for initial testing and prompt engineering/tuning.
 * **`raw_data_results_fewshot/` & `raw_data_results_zeroshot/`**: The raw inference outputs from various LLMs across both testing paradigms.
 * **`results/`**: Comprehensive evaluation reports comparing model outputs against the finalized labels (Metrics: Accuracy, F1-score, etc.).
-
----
 
 ### 4. Data Collection
 * **`xiaohongshu_download/`**: Contains the crawler scripts and tools used to fetch the original social media data from Xiaohongshu.
