@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background-color: #f9f9f4ff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            background-color: #f9f9f4ff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            height: 100vh;  /* 容器高度，右侧内部滚动 */
+        }
+
+        /* 左侧：图片 + 标题 */
+        .left-column {
+            width: 35%;
+            text-align: center;
+            position: relative;
+            height: 96vh;  /* 限制容器的高度 */
+            padding: 15px;
+            background-color: #f9f9f4ff;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;  /* 允许图片部分滑动 */
+        }
+
+        .left-column img {
+            width: 95%; /* 确保图片宽度适应容器 */
+            max-height: 88vh; /* 限制图片最大高度 */
+            object-fit: contain;  /* 确保图片的比例不被拉伸 */
+            border-radius: 5px;
+        }
+
+        /* 标题部分：让标题固定显示 */
+        .left-column h3 {
+            position: absolute;  /* 使标题固定 */
+            bottom: 10px;  /* 保证标题距离底部一定的距离 */
+            width: 100%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+            word-wrap: break-word;
+            white-space: normal;  /* 允许换行 */
+        }
+
+        /* 右侧：问题 + 按钮（右侧可滚动） */
+        .right-column {
+            width: 65%;
+            padding: 10px;
+            position: relative;
+            overflow-y: auto;
+            max-height: 110vh;
+            background-color: #f9f9f4ff;
+            box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 右上角跳转表单 */
+        .jump-form {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .jump-form input[type="number"] {
+            width: 150px;
+            padding: 4px 6px;
+            font-size: 0.9rem;
+        }
+
+        .jump-form button {
+            padding: 4px 8px;
+            font-size: 0.9rem;
+            background-color: #FF9BB3;
+            color: white;
+            border: 1px solid #FF9BB3;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .jump-form button:hover {
+            background-color: #FF9BB3;
+            border-color: #FF9BB3;
+        }
+
+        /* 问题块 */
+        .question-group {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .question-group h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        .question-label {
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        /* 蓝色标签样式：逐步判断 / 核心判断句 / 核心排除句 */
+        .question-label .hint-label {
+            color: #9F9DF3;
+            font-weight: bold;
+            margin-right: 4px;
+            font-size: 1.2rem;
+        }
+
+        .answer-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .answer-options label {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            padding: 10px;
+        }
+
+        .answer-options input[type="radio"] {
+            transform: scale(1.5); /* 增大单选按钮的大小 */
+            margin-right: 10px; /* 增加按钮与文本之间的间距 */
+        }
+
+        /* 固定在右下角的按钮 */
+        .next-prev-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        .next-prev-buttons button,
+        .next-prev-buttons a {
+            font-size: 1.2rem;
+            padding: 8px 16px;
+            background-color: #FF9BB3;
+            color: white;
+            border: 3px solid #FF9BB3;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .next-prev-buttons button:hover,
+        .next-prev-buttons a:hover {
+            background-color: #FF9BB3;
+            border-color: #FF9BB3;
+        }
+
+        .next-prev-buttons button:disabled {
+            background-color: #ccc;
+            border-color: #aaa;
+            cursor: not-allowed;
+        }
+
+        /* 进度条样式（你现在只显示文字，如果以后要真做进度条可以用这里） */
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #FF9BB3;
+            border-radius: 10px;
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧：图片 + 标题 -->
+        <div class="left-column">
+            <img src="{{ url_for('serve_image', post_id=post_id) }}" alt="Image">
+            <h3>{{ title }}</h3>
+        </div>
+
+        <!-- 右侧：问题和按钮 -->
+        <div class="right-column">
+
+            <!-- 右上角跳转表单：输入编号跳转到任意一条 -->
+            <form method="POST" action="{{ url_for('jump_to') }}" class="jump-form">
+                <input type="number"
+                       name="target_idx"
+                       min="1"
+                       max="{{ total_images }}"
+                       placeholder="输入想查询的题号...">
+                <button type="submit">跳转</button>
+            </form>
+
+            <!-- 主表单：保存答案并跳下一条 -->
+            <form action="{{ url_for('save_and_next') }}" method="POST">
+                <input type="hidden" name="post_id" value="{{ post_id }}">
+                <input type="hidden" name="idx" value="{{ idx }}">
+                <input type="hidden" name="current_page" value="0">
+
+                <!-- 所有问题 -->
+                {% for question_type in question_types %}
+                <div class="question-group">
+                    <h3>{{ question_type.title }}</h3>
+                    <p>{{ question_type.definition|safe }}</p>
+
+                    {% for question in question_type.questions %}
+                    <div class="question">
+                        <!-- 显示问题（带蓝色标签等 HTML） -->
+                        <label class="question-label">{{ question|safe }}</label>
+
+                        <!-- 隐藏的“纯文字版本”，用于 JSON 里的 key -->
+                        <input type="hidden"
+                               name="question_texts"
+                               value="{{ question_plain_map[question] }}">
+
+                        <div class="answer-options">
+                            {% set q_idx = question_index_map[question] %}
+                            <label>
+                                <input type="radio"
+                                       name="answer_{{ q_idx }}"
+                                       value="True"
+                                       {% if answers_for_current_type[question] == 'True' %}checked{% endif %}> ✔
+                            </label>
+                            <label>
+                                <input type="radio"
+                                       name="answer_{{ q_idx }}"
+                                       value="False"
+                                       {% if answers_for_current_type[question] == 'False' %}checked{% endif %}> ✖
+                            </label>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+                <!-- 显示进度 -->
+                <p>进度：{{ progress }} / {{ total_images }}</p>
+
+                <!-- 右下角按钮 -->
+                <div class="next-prev-buttons">
+                    {% if is_last_image %}
+                        <button type="submit">完成</button>
+                    {% else %}
+                        <button type="submit">保存并跳到下一条</button>
+                    {% endif %}
+                    <a href="{{ url_for('view_item', idx=idx-1) }}">回到上一条</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

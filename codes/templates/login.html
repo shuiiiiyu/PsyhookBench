@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>请输入姓名</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f4ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #edf5deff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-container .field-label {
+            display: block;
+            text-align: left;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .login-container input[type="text"],
+        .login-container select {
+            width: 260px;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 18px;
+        }
+
+        .login-container button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #FF9BB3;
+            color: white;
+            border: 2px solid #FF9BB3;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #FF9BB3;
+            border-color: #FF9BB3;
+        }
+
+        .hint {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>请输入您的姓名并选择标注内容</h2>
+        <form method="POST" action="{{ url_for('login') }}">
+            <!-- 姓名输入 -->
+            <label class="field-label" for="username">姓名：</label>
+            <input type="text" id="username" name="username" placeholder="请输入姓名" required>
+            <br>
+
+            <!-- 选择 CSV -->
+            <label class="field-label" for="csv_label">选择要使用的文件：</label>
+            <select id="csv_label" name="csv_label" required>
+                {% for label, key in csv_files.items() %}
+                    <option value="{{ label }}">{{ label }}</option>
+                {% endfor %}
+            </select>
+            <h3>谢谢您的每一个回答！恭祝科研顺利，期末好运！</h3>
+            <br>
+            <button type="submit">开始标注</button>
+        </form>
+    </div>
+</body>
+</html>

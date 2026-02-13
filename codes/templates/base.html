@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ current_csv_name if current_csv_name else "CSV 浏览器" }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">CSV 目录</div>
+      <div class="sidebar-list">
+        {% for key in csv_keys %}
+          <a class="sidebar-item {% if key == current_csv_key %}active{% endif %}"
+             href="{{ url_for('view_csv', csv_key=key) }}">
+            {{ key }}
+          </a>
+        {% endfor %}
+      </div>
+    </aside>
+
+    <main class="main">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

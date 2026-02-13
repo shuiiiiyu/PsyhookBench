@@ -1,0 +1,4 @@
+﻿ModelName,TestFile,MatchCount,Macro-F1,Micro-F1,HammingLoss,EMR
+qwen2.5_vl_32b,label_title_final.csv,3005,0.4149,0.5139,0.1698,0.2496
+qwen2.5_vl_7b,label_title_final.csv,3005,0.2541,0.3226,0.148,0.2992
+qwen3b,label_title_final.csv,3005,0.0815,0.0832,0.1778,0.2097

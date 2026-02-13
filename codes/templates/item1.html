@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        body { font-size: 16px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; background-color: #FFFFFF; display: flex; height: 100vh; overflow: hidden; }
+        .container { display: flex; width: 100%; height: 100%; }
+
+        /* 左侧布局 */
+        .left-column { font-size: 1.3rem; width: 35%; padding: 20px; overflow-y: auto; border-right: 1px solid #ddd; background: #FFFFFF; }
+        .media-box { position: relative; width: 100%; background: #000; border-radius: 8px; min-height: 400px; display: flex; align-items: center; justify-content: center; }
+        .media-item { display: none; max-width: 100%; max-height: 75vh; }
+        .media-item.active { display: block; }
+        
+        .nav-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: #FFFFFF; border: none;
+            width: 30px; height: 30px; padding: 0;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; border-radius: 50%; z-index: 5;
+        }
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+        
+        .content-box { margin-top: 15px; padding: 15px; background: #FFFFFF; border-radius: 8px; white-space: pre-wrap; font-size: 1rem; line-height: 1.6; }
+
+        /* 右侧布局 */
+        .right-column { width: 65%; display: flex; flex-direction: column; height: 100vh; }
+        
+        .sticky-header { padding: 15px 30px; background: #FFFFFF; border-bottom: 2px solid #FFFFFF; z-index: 10; position: relative; }
+        
+        /* 评分标准说明白色框 */
+        .standard-desc { 
+            background: #FFFFFF; padding: 0px; border-radius: 0px; border: 0px solid #f3f4f9ff; 
+            margin-bottom: 0px; position: relative; 
+        }
+        .standard-desc h2 { margin: 0 0 0 0; font-size: 1.5rem; font-weight: bold; color: #333; }
+        .standard-desc p { margin: 6px 0; font-size: 1rem; line-height: 1.4; color: #555; padding-right: 160px; }
+        .standard-desc b { color: #1D4ED8; }
+
+        /* 跳转功能移入说明框右上角 */
+        .jump-form-container { position: absolute; top: 20px; right: 20px; display: flex; align-items: center; gap: 8px; }
+        .jump-input { width: 50px; padding: 4px; border: 1px solid #ddd; border-radius: 4px; text-align: center; }
+        .jump-btn { padding: 4px 12px; cursor: pointer; background: #FFFFFF; border: 1px solid #ccc; border-radius: 4px; font-weight: bold; }
+
+        .scroll-body { flex: 1; overflow-y: auto; padding: 10px 30px; position: relative; z-index: 1; }
+        .sticky-footer { padding: 15px 30px; background: #FFFFFF; border-top: 1px solid #eee; z-index: 10; }
+
+        .section-title { font-size: 1.3rem; font-weight: bold; margin: 25px 0 15px; color: #333; border-left: 4px solid #1D4ED8; padding-left: 10px; }
+
+        .hook-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .ethics-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+
+        .option-card { 
+            position: relative; background: #f0f1f2ff; border-radius: 8px; padding: 12px; 
+            display: flex; justify-content: space-between; align-items: center;
+            border: 2px solid transparent; transition: 0.3s; cursor: pointer;
+        }
+        .option-card.active { border-color: #1D4ED8; background: #FFFFFF; box-shadow: 0 2px 8px #ffffffff; }
+
+        .tooltip {
+            visibility: hidden; width: 400px; background-color: #3f3f3fff; color: #FFFFFF;
+            padding: 12px; border-radius: 6px; position: absolute; z-index: 9999;
+            top: 80%; left: 50%; transform: translateX(-50%);
+            opacity: 0; transition: opacity 0.2s; font-size: 0.85rem; line-height: 1.4;
+            pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            white-space: pre-wrap;
+        }
+        .option-card:hover .tooltip { visibility: visible; opacity: 1; }
+
+        .info-text h4 { margin: 0; font-size: 1.05rem; color: #222; }
+        .info-text p { margin: 4px 0 0; font-size: 0.95rem; color: #666; line-height: 1.3; }
+
+        .score-group { display: flex; gap: 4px; margin-left: 8px; }
+        .score-box {
+            width: 28px; height: 28px; line-height: 28px; text-align: center;
+            background: #FFFFFF; border: 1px solid #ddd; border-radius: 4px; font-weight: bold; font-size: 0.8rem;
+        }
+        .score-box.active { background: #1D4ED8; border-color: #1D4ED8; color: #FFFFFF; }
+
+        .footer { display: flex; justify-content: space-between; align-items: center; }
+        .btn-save { background: #1D4ED8; color: white; border: none; padding: 10px 35px; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .btn-prev { color: #1D4ED8; text-decoration: none; border: 1px solid #1D4ED8; padding: 8px 20px; border-radius: 6px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <div class="media-box">
+                {% for m in media_list %}
+                    {% if m.lower().endswith('.mp4') %}
+                        <video class="media-item {% if loop.first %}active{% endif %}" controls>
+                            <source src="{{ url_for('serve_media', post_id=post_id, filename=m) }}" type="video/mp4">
+                        </video>
+                    {% else %}
+                        <img src="{{ url_for('serve_media', post_id=post_id, filename=m) }}" class="media-item {% if loop.first %}active{% endif %}">
+                    {% endif %}
+                {% endfor %}
+                {% if media_list|length > 1 %}
+                    <button class="nav-btn prev-btn" onclick="changeMedia(-1)">❮</button>
+                    <button class="nav-btn next-btn" onclick="changeMedia(1)">❯</button>
+                {% endif %}
+            </div>
+            <p style="text-align: center; color: #999; font-size: 0.85rem;"> <span id="m-num">1</span> / {{ media_list|length }}</p>
+            <h3 style="margin: 15px 10px 5px;">{{ title }}</h3>
+            <div class="content-box">{{ content }}</div>
+        </div>
+
+        <div class="right-column">
+            <div class="sticky-header">
+                <div class="standard-desc">
+                    <h2>Multi-select Scoring Criteria</h2>
+                    <div class="jump-form-container">
+                        <form action="{{ url_for('jump_to') }}" method="POST">
+                            <span style="font-size: 0.9rem; color: #555;">jump：</span>
+                            <input type="number" name="target_idx" class="jump-input" min="1" max="{{ total_images }}" placeholder="No.">
+                            <button type="submit" class="jump-btn">jump</button>
+                        </form>
+                    </div>
+                    <p>0 = Absent: No cues related to this mechanism appear in the content; no connection.</p>
+                    <p>1 = Uncertain: Only very vague cues; hard to confirm.</p>
+                    <p>2 = Likely Present: Potential/similar cues can be identified; a tendency of association is perceptible.</p>
+                    <p>3 = Clearly Present: Clear and specific cues are present; they directly indicate this mechanism.</p>
+                </div>
+            </div>
+
+            <div class="scroll-body">
+                <form id="annotate-form" action="{{ url_for('save_and_next') }}" method="POST">
+                    <input type="hidden" name="post_id" value="{{ post_id }}">
+                    <input type="hidden" name="idx" value="{{ idx }}">
+                    <input type="hidden" name="title_hidden" value="{{ title }}">
+
+                    <div class="section-title">Psychological Hook Mechanism Evaluation</div>
+                    <div class="hook-grid">
+                        {% for opt in options %}
+                            {% set score = saved_hooks.get(opt.id, 0)|int %}
+                            <div class="option-card {% if score > 0 %}active{% endif %}" id="card-{{ opt.id }}">
+                                <div class="info-text">
+                                    <h4>{{ opt.title }}</h4>
+                                    <p>{{ opt.definition }}</p>
+                                </div>
+                                <div class="tooltip">{{ opt.details | safe }}</div>
+                                
+                                <input type="hidden" name="score_{{ opt.id }}" id="input-{{ opt.id }}" value="{{ score }}">
+                                <div class="score-group">
+                                    <div class="score-box {% if score == 0 %}active{% endif %}" onclick="setScore('{{ opt.id }}', 0, event)">0</div>
+                                    {% for v in [1, 2, 3] %}
+                                        <div class="score-box {% if score == v %}active{% endif %}" onclick="setScore('{{ opt.id }}', {{ v }}, event)">{{ v }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="section-title">Ethics Review: Does the content contain any of the following ethical risks?</div>
+                    <div class="ethics-grid">
+                        {% for opt in extra_options %}
+                            {% set is_selected = saved_ethics.get(opt.id, 0)|int %}
+                            <div class="option-card {% if is_selected %}active{% endif %}" 
+                                 id="card-{{ opt.id }}" 
+                                 onclick="toggleEthics('{{ opt.id }}')"
+                                 style="flex-direction: column; align-items: flex-start;">
+                                <div class="info-text">
+                                    <h4 style="font-size: 1.05rem;">{{ opt.title }}</h4>
+                                    <p style="font-size: 0.85rem;">{{ opt.definition }}</p>
+                                </div>
+                                <input type="hidden" name="score_{{ opt.id }}" id="input-{{ opt.id }}" value="{{ is_selected }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div style="height: 50px;"></div>
+                </form>
+            </div>
+
+            <div class="sticky-footer">
+                <div class="footer">
+                    <a href="{{ url_for('view_item', idx=idx-1) if idx > 0 else '#' }}" class="btn-prev">prov</a>
+                    <span style="color: #888; font-size: rem;">progress: {{ progress }} / {{ total_images }}</span>
+                    <button type="submit" form="annotate-form" class="btn-save">{{ 'submit' if is_last_image else 'next' }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeMedia(dir) {
+            const items = document.querySelectorAll('.media-item');
+            let current = 0;
+            items.forEach((item, i) => { if(item.classList.contains('active')) current = i; });
+            if(items[current].tagName === 'VIDEO') items[current].pause();
+            items[current].classList.remove('active');
+            let next = (current + dir + items.length) % items.length;
+            items[next].classList.add('active');
+            document.getElementById('m-num').innerText = next + 1;
+        }
+
+        function setScore(optId, val, event) {
+            event.stopPropagation();
+            document.getElementById('input-' + optId).value = val;
+            const card = document.getElementById('card-' + optId);
+            const boxes = card.querySelectorAll('.score-box');
+            val > 0 ? card.classList.add('active') : card.classList.remove('active');
+            boxes.forEach(box => {
+                box.classList.remove('active');
+                if(box.innerText == val) box.classList.add('active');
+            });
+        }
+
+        function toggleEthics(optId) {
+            const input = document.getElementById('input-' + optId);
+            const card = document.getElementById('card-' + optId);
+            if (input.value === "1") {
+                input.value = "0";
+                card.classList.remove('active');
+            } else {
+                input.value = "1";
+                card.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

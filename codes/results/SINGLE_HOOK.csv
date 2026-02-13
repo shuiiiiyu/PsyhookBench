@@ -1,0 +1,10 @@
+﻿ModelName,TestFile,MatchCount,Macro-F1,Micro-F1,HammingLoss,EMR
+claude,only_one.csv,1327,0.4706,0.6144,0.1205,0.4084
+deepseek_fewshot,only_one.csv,1327,0.1979,0.2765,0.2243,0.0188
+gemini,only_one.csv,1327,0.4392,0.5359,0.1736,0.2487
+gemma4_4b,only_one.csv,1327,0.2725,0.3671,0.1332,0.2735
+glm4.1v,only_one.csv,1327,0.2262,0.2332,0.1604,0.1085
+qwen2.5_vl_32b,only_one.csv,1327,0.3831,0.5267,0.1603,0.2321
+qwen2.5_vl_7b,only_one.csv,1327,0.2641,0.364,0.1346,0.2735
+qwen3b,only_one.csv,1327,0.0907,0.0783,0.1686,0.0565
+yi-vision-v2,only_one.csv,1327,0.5568,0.6782,0.084,0.529

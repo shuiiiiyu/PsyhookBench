@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="h1">当前 CSV：{{ current_csv_name }}</div>
+    <div class="meta">显示第 {{ start }} - {{ end }} 条 / 共 {{ total }} 条（第 {{ page }}/{{ total_pages }} 页）</div>
+  </div>
+
+  <form class="jump-form" method="get" action="{{ url_for('view_csv', csv_key=current_csv_key) }}">
+    <input class="jump-input" name="jump_post_id" placeholder="输入 post_id 跳转" />
+    <button class="jump-btn" type="submit">跳转</button>
+  </form>
+</div>
+
+{% if not_found %}
+  <div class="warn">未找到 post_id：{{ not_found }}</div>
+{% endif %}
+
+<div class="pager">
+  {% if page > 1 %}
+    <a class="pager-btn" href="{{ url_for('view_csv', csv_key=current_csv_key, page=page-1) }}">上一页</a>
+  {% endif %}
+  {% if page < total_pages %}
+    <a class="pager-btn" href="{{ url_for('view_csv', csv_key=current_csv_key, page=page+1) }}">下一页</a>
+  {% endif %}
+</div>
+
+<div class="grid">
+  {% for r in rows %}
+    {% set pid = r['post_id'] %}
+    <div class="card
+                {% if highlight and pid == highlight %}highlight{% endif %}
+                {% if r['choice'] == 1 %}choice-1{% endif %}"
+         id="post_{{ pid }}">
+
+      <!-- ✅ 竖图：不裁切 + 模糊背景填充 -->
+      <div class="imgbox blurfill" style="--bg:url('{{ url_for('serve_img', post_id=pid) }}')">
+        <img src="{{ url_for('serve_img', post_id=pid) }}"
+             alt="cover"
+             onerror="this.style.display='none'; this.parentElement.classList.add('img-missing');" />
+        <div class="img-missing-text">cover.jpg 不存在</div>
+      </div>
+
+      <div class="card-body">
+        <div class="pid">post_id：{{ pid }}</div>
+        <div class="title">{{ r['title'] }}</div>
+
+        <div class="choice-line">
+          当前选择：
+          {% if r['choice'] == 1 %}
+            <span class="choice-value choice-yes">是 (1)</span>
+          {% else %}
+            <span class="choice-value choice-no">未选 (0)</span>
+          {% endif %}
+        </div>
+
+        <!-- ✅ 不用 form：用按钮 + fetch，不刷新 -->
+        <div class="choice-actions"
+             data-csv-key="{{ current_csv_key }}"
+             data-post-id="{{ pid }}">
+          <button class="btn-yes js-yes" type="button">是</button>
+          <button class="btn-reset js-reset" type="button">重置</button>
+          <span class="save-hint"></span>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="pager bottom">
+  {% if page > 1 %}
+    <a class="pager-btn" href="{{ url_for('view_csv', csv_key=current_csv_key, page=page-1) }}">上一页</a>
+  {% endif %}
+  {% if page < total_pages %}
+    <a class="pager-btn" href="{{ url_for('view_csv', csv_key=current_csv_key, page=page+1) }}">下一页</a>
+  {% endif %}
+</div>
+
+<script>
+  // 事件委托：不用给每个卡片单独绑监听
+  document.addEventListener('click', async (e) => {
+    const btn = e.target.closest('.js-yes, .js-reset');
+    if (!btn) return;
+
+    const card = btn.closest('.card');
+    const box = btn.closest('.choice-actions');
+    const csvKey = box.dataset.csvKey;
+    const postId = box.dataset.postId;
+    const action = btn.classList.contains('js-yes') ? 'yes' : 'reset';
+
+    const hint = box.querySelector('.save-hint');
+    hint.textContent = '保存中...';
+
+    // 防止连点
+    const yesBtn = box.querySelector('.js-yes');
+    const resetBtn = box.querySelector('.js-reset');
+    yesBtn.disabled = true;
+    resetBtn.disabled = true;
+
+    try {
+      const resp = await fetch('{{ url_for("api_set_choice") }}', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ csv_key: csvKey, post_id: postId, action })
+      });
+
+      const data = await resp.json();
+      if (!resp.ok || !data.ok) {
+        throw new Error((data && data.error) ? data.error : '保存失败');
+      }
+
+      // 更新 UI
+      const valueEl = card.querySelector('.choice-value');
+      if (data.choice === 1) {
+        card.classList.add('choice-1');
+        valueEl.textContent = '是 (1)';
+        valueEl.classList.add('choice-yes');
+        valueEl.classList.remove('choice-no');
+      } else {
+        card.classList.remove('choice-1');
+        valueEl.textContent = '未选 (0)';
+        valueEl.classList.add('choice-no');
+        valueEl.classList.remove('choice-yes');
+      }
+
+      hint.textContent = '已保存';
+      setTimeout(() => hint.textContent = '', 700);
+    } catch (err) {
+      hint.textContent = '';
+      alert('保存失败：' + err.message);
+    } finally {
+      yesBtn.disabled = false;
+      resetBtn.disabled = false;
+    }
+  });
+</script>
+
+{% endblock %}
