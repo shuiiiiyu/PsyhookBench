@@ -4,13 +4,10 @@
 from pathlib import Path
 import pandas as pd
 
-# ===================== 你只需要改这两行 =====================
 INPUT_CSV = r"E:\Phyhookbench\TEST\label_title_final.csv"
 OUT_CSV   = r"E:\Phyhookbench\TEST\label_title_final_stats\nonzero_count.csv"
-# ============================================================
 
 HOOK_COLS = [str(i) for i in range(1, 9)]  # 列名 "1"~"8"
-
 
 def read_csv_auto(path: Path) -> pd.DataFrame:
     """自动尝试常见编码读取 CSV，避免 UnicodeDecodeError。"""
@@ -54,9 +51,9 @@ def main():
 
     out_df.to_csv(out_path, index=False, encoding="utf-8-sig")
 
-    print("✅ 已统计 two_or_more_nonzero 的细分分布（2~8）：")
+    print("已统计 two_or_more_nonzero 的细分分布（2~8）：")
     print(out_df.to_string(index=False))
-    print(f"✅ 已保存：{out_path}")
+    print(f"已保存：{out_path}")
 
 
 if __name__ == "__main__":
