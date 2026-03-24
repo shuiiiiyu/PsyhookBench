@@ -12,7 +12,7 @@ from PIL import Image
 import cv2
 from openai import OpenAI
 
-# ===================== 1. 路径与配置 =====================
+# 路径与配置
 TEST_CSV = "2500.csv"
 REF_CSV  = "541_raw_data.csv"
 DOWNLOADS_DIR = "downloads"
@@ -25,12 +25,12 @@ MODEL_NAME = "qwen-vl-max"
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 API_KEY = "sk-xxxx" 
 
-# ===================== 2. 网络配置 =====================
+# 网络配置
 os.environ["NO_PROXY"] = "dashscope.aliyuncs.com"
 http_client = httpx.Client(trust_env=False, proxies=None, timeout=60.0)
 client = OpenAI(api_key=API_KEY, base_url=BASE_URL, http_client=http_client)
 
-# ===================== 3. 媒体处理函数 (优化版) =====================
+# 媒体处理函数 (优化版)
 MAX_IMG_SIDE = 1024
 JPEG_QUALITY = 80 
 
@@ -72,7 +72,7 @@ def _sample_video_frames(video_path: Path, n_frames: int = 4) -> List[str]:
     cap.release()
     return frames_b64
 
-# ===================== 4. 核心逻辑 =====================
+# 核心逻辑 
 def build_smart_content(pid: str, text: str) -> List[Dict]:
     """
     智能选择模态：
@@ -120,7 +120,7 @@ def build_smart_content(pid: str, text: str) -> List[Dict]:
     content_list.append({"type": "text", "text": text})
     return content_list
 
-# ===================== 5. 准则与主逻辑 =====================
+# 准则与主逻辑
 RUBRIC_TEXT = """你是内容审核员。给你一条小红书内容卡片：标题、封面、展开正文、以及该内容的所有图片/视频帧（封面在第一张）,其中预览内容只封面和标题，预览内容不包括展开正文和除封面外所有图片视频。
 请先阅读预览内容，再把预览内容和正文内容、封面后所有图片视频呈现的内容对比，判断是否存在以下伦理风险，可多选，并输出严格JSON（不要多余文字）：
 {
