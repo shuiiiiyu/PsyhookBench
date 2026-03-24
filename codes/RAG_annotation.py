@@ -13,7 +13,7 @@ from cn_clip.clip.utils import load_from_name
 from modelscope.hub.snapshot_download import snapshot_download
 from sklearn.metrics import f1_score, accuracy_score, hamming_loss, classification_report
 
-# ===================== 1. 核心路径配置 =====================
+#核心路径配置
 GOLDEN_LABEL_CSV = "postid.csv" 
 GOLDEN_TITLE_CSV = "541_raw_data.csv"
 TASK_CSV = "2500_raw_data.csv"
@@ -36,7 +36,7 @@ COS_CONFIG = {
 
 IMAGE_CACHE = {}
 
-# ===================== 2. 提示词模块 (一个字未改) =====================
+#提示词模块
 BASE_HOOK_DEFINITIONS = """
 You are a social media content analyst. Analyze the following post (Title and Cover Image) for psychological hooks. 
 For each hook, output 1 if present, 0 if not.
@@ -164,7 +164,7 @@ Return the results in JSON format. Ensure 'reasoning' comes FIRST:
   "h1":0/1, "h2":0/1, "h3":0/1, "h4":0/1, "h5":0/1, "h6":0/1, "h7":0/1, "h8":0/1
 }"""
 
-# ===================== 3. 工具函数 =====================
+#工具函数
 
 def clean_id(x): return str(x).strip().lower()
 
@@ -173,7 +173,7 @@ def get_cos_client():
     return CosS3Client(config)
 
 def load_clip_model():
-    print("🚀 正在加载 Chinese-CLIP 多模态编码模型...")
+    print("正在加载 Chinese-CLIP 多模态编码模型...")
     model_dir = snapshot_download("AI-ModelScope/chinese-clip-vit-base-patch16")
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model, preprocess = load_from_name("ViT-B-16", device=device)
@@ -200,24 +200,23 @@ def generate_validation_report(final_df, expert_csv_path):
         merged = pd.merge(df_gt[['post_id'] + hook_cols], final_df, on='post_id', suffixes=('_gt', '_pred'))
         y_true = merged[[f'{h}_gt' for h in hook_cols]].values
         y_pred = merged[[f'{h}_pred' for h in hook_cols]].values
-        print("\n" + "📊" * 15 + " 最终效度验证报告 " + "📊" * 15)
-        print(f"✅ 对齐样本总数: {len(merged)}")
-        print(f"🎯 完全匹配率 (EMR): {accuracy_score(y_true, y_pred):.4f}")
-        print(f"📉 汉明损失 (Hamming Loss): {hamming_loss(y_true, y_pred):.4f}")
-        print(f"⚖️ 宏平均 F1 (Macro-F1): {f1_score(y_true, y_pred, average='macro'):.4f}")
+        print("\n" + "-" * 15 + " 最终效度验证报告 " + "-" * 15)
+        print(f"对齐样本总数: {len(merged)}")
+        print(f"完全匹配率 (EMR): {accuracy_score(y_true, y_pred):.4f}")
+        print(f"汉明损失 (Hamming Loss): {hamming_loss(y_true, y_pred):.4f}")
+        print(f"宏平均 F1 (Macro-F1): {f1_score(y_true, y_pred, average='macro'):.4f}")
         print("-" * 60)
         for i, h in enumerate(hook_cols, 1):
             f1 = f1_score(y_true[:, i-1], y_pred[:, i-1])
             print(f"[Hook {i}] F1 Score: {f1:.4f}")
-    except Exception as e: print(f"⚠️ 无法生成比对报告: {e}")
+    except Exception as e: print(f"无法生成比对报告: {e}")
 
-# ===================== 4. 主流程 =====================
-
+#主流程
 def run_pipeline():
     total_calls = 0
     invalid_outputs = 0
     
-    print("📂 步骤 1: 正在构建统一元数据池...")
+    print("正在构建统一元数据池...")
     df_golden = pd.read_csv(GOLDEN_TITLE_CSV, dtype={'post_id': str})
     df_task = pd.read_csv(TASK_CSV, dtype={'post_id': str})
     df_label_base = pd.read_csv(GOLDEN_LABEL_CSV, dtype={'post_id': str})
@@ -232,14 +231,14 @@ def run_pipeline():
                 "label_info": ""
             }
     
-    # 注入金标准标签信息用于 RAG 文本展示
+    # 注入人工标签信息用于 RAG 文本展示
     for _, row in df_label_base.iterrows():
         pid = clean_id(row['post_id'])
         if pid in unified_meta:
             labels = [f"h{i}:{row[str(i)]}" for i in range(1, 9) if str(i) in df_label_base.columns]
             unified_meta[pid]["label_info"] = ", ".join(labels)
 
-    print("🧠 步骤 2: 正在提取双权重特征索引...")
+    print("正在提取双权重特征索引...")
     model, preprocess, device = load_clip_model()
     cos_client = get_cos_client()
     golden_ids = df_golden['post_id'].map(clean_id).tolist()
@@ -276,7 +275,7 @@ def run_pipeline():
     idx_55 = faiss.IndexFlatIP(len(vecs_55[0]))
     idx_55.add(np.asarray(vecs_55, dtype="float32"))
 
-    print("🤖 步骤 3: 分组启动多模态 RAG 标注...")
+    print("分组启动多模态 RAG 标注...")
     ai_client = OpenAI(api_key=API_KEY, base_url=BASE_URL, http_client=httpx.Client(timeout=60.0))
     task_ids = df_task['post_id'].map(clean_id).tolist()
     final_decisions = {pid: {"post_id": pid} for pid in task_ids}
@@ -292,7 +291,7 @@ def run_pipeline():
         target_b64 = get_image_b64_from_cos(cos_client, meta['cover_path'])
         if not target_b64: continue
         
-        # 预计算 Task 的特征
+        # 预计算特征
         try:
             cos_obj = cos_client.get_object(Bucket=COS_CONFIG['Bucket'], Key=meta['cover_path'])
             img_raw = cos_obj['Body'].get_raw_stream().read()
