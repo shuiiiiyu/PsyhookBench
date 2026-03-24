@@ -1,11 +1,44 @@
 # PsyhookBench
-## 📂Image Storage
+## 📂Dataset Image Storage
 
 All images related to this repository are hosted on a private **Tencent Cloud COS (Cloud Object Storage)** bucket to maintain repository performance and structure.
 
-If you require access to the full dataset, including the bucket ID and credentials (SecretId/SecretKey), please contact the maintainer via email:
+PsyHookBench is a multimodal benchmark containing over **30GB** of social media data, specifically designed to evaluate how Vision-Language Models (VLMs) understand psychological persuasion ("hooks").
 
-📧 **Email:** [2351470@tongji.edu.cn](mailto:2351470@tongji.edu.cn)
+We provide two ways to interact with the dataset, depending on your needs:
+
+1.  **Interactive Explorer (Recommended)** [http://124.221.85.147:5000](http://124.221.85.147:5000)  
+    *Browse the image-label pairs directly in your browser without downloading anything.*
+
+2.  **Full Dataset Download (ZIP)** [Download Full Dataset (30GB)](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset-img.zip)  
+    *Direct high-speed download from Tencent Cloud COS.*
+---
+
+### 📂 Dataset Structure & Labels
+
+Our dataset categorizes psychological hooks into 8 core mechanisms based on social psychology:
+
+| ID | Hook Mechanism | Description |
+| :--- | :--- | :--- |
+| 1 | **FOMO** | Fear of Missing Out / Loss Aversion |
+| 2 | **Gain Appeal** | Emphasizing benefits, efficiency, or rewards |
+| 3 | **Information-gap** | Creating curiosity through intentional omission |
+| 4 | **Anomaly & Novelty** | Counterintuitive or rare content |
+| 5 | **Perceptual Contrast** | Visual or textual "Before vs. After" |
+| 6 | **Ingroup/Outgroup** | Social identity and group belonging |
+| 7 | **Social Comparison** | Relative status, gaps, and competition |
+| 8 | **Authority** | Expert endorsements and certifications |
+
+#### File Organization
+Once unzipped, the data is organized by `post_id`:
+```text
+/dataset-img/
+├── downloads/
+│   ├── [post_id_001]/
+│   │   ├── cover.jpg
+│   │   └── metadata.json
+│   └── ...
+└── labeled_title_zeroshot.csv  # Mapping of post_id to 1-8 hook scores
 
 To respect your time and ensure data transparency, we provide an interactive web portal. You can browse representative samples without downloading the full dataset.
 
