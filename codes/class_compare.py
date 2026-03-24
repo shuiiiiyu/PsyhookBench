@@ -15,7 +15,7 @@ def run_batch_evaluation_pivot(check_status_folder, model_results_folder):
     h_cols = [f'h{i}' for i in range(1, 9)]
     pred_cols = [str(i) for i in range(1, 9)]
 
-    # 1. 遍历每一个模型
+    # 遍历每一个模型
     for model_file in model_files:
         model_name = os.path.splitext(model_file)[0]
         model_path = os.path.join(model_results_folder, model_file)
@@ -27,7 +27,7 @@ def run_batch_evaluation_pivot(check_status_folder, model_results_folder):
             
             print(f"正在处理模型: {model_name}")
 
-            # 2. 遍历每一个基准文件
+            # 遍历每一个基准文件
             for root, dirs, files in os.walk(check_status_folder):
                 for file in files:
                     if file.endswith('.csv'):
@@ -59,7 +59,7 @@ def run_batch_evaluation_pivot(check_status_folder, model_results_folder):
         except Exception as e:
             print(f"读取模型 {model_file} 出错: {e}")
 
-    # 3. 转换为透视表格式
+    # 转换为透视表格式
     if master_summary:
         df_flat = pd.DataFrame(master_summary)
         # 旋转：行是模型，列是基准文件
@@ -73,14 +73,12 @@ def run_batch_evaluation_pivot(check_status_folder, model_results_folder):
         df_pivot.to_csv(output_name, encoding='utf-8-sig')
         
         print("\n" + "="*80)
-        print(f"✅ 处理完成！透视汇总表已生成。")
+        print(f"处理完成")
         print(f"保存路径: {output_name}")
         print("="*80)
         print(df_pivot.to_string())
     else:
-        print("❌ 未生成任何有效数据。")
+        print("未生成任何有效数据。")
 
 if __name__ == "__main__":
-    # check/class: 基准文件夹
-    # 测试结果: 模型文件夹
     run_batch_evaluation_pivot('check/class', '测试结果')
