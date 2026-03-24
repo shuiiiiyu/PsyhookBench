@@ -12,6 +12,8 @@ We provide two ways to interact with the dataset, depending on your needs:
 
 2.  **Full Dataset Download (ZIP)** [Download Full Dataset](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset-img.zip)  
     *Direct high-speed download from Tencent Cloud COS.*
+3.  **Complete Annotations (CSV):** [Download labeled_title_zeroshot.csv](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/label_title_zeroshot.csv)  
+    *The full ground-truth file mapping `post_id` to psychological hook scores (0-2).*
 ---
 
 ## 📂 Dataset Structure & Labels
