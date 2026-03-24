@@ -28,17 +28,6 @@ Our dataset categorizes psychological hooks into 8 core mechanisms based on soci
 | 6 | **Ingroup/Outgroup** | Social identity and group belonging |
 | 7 | **Social Comparison** | Relative status, gaps, and competition |
 | 8 | **Authority** | Expert endorsements and certifications |
-### File Organization
-Once unzipped, the data is organized by `post_id`:
-```text
-/dataset-img/
-├── downloads/
-│   ├── [post_id_001]/
-│   │   ├── cover.jpg
-│   │   └── metadata.json
-│   └── ...
-└── labeled_title_zeroshot.csv  # Mapping of post_id to 1-8 hook scores
-'''
       
 ## 📂 Repository Structure & Dataset Description
 
