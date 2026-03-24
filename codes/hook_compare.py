@@ -59,12 +59,12 @@ def batch_evaluate_f1_pivot(one_col_dir, model_results_folder):
         pivot_df.to_csv(output_name, encoding='utf-8-sig')
         
         print("\n" + "="*70)
-        print(f"✅ 评估完成！F1 对比总表已生成。")
+        print(f"评估完成！F1 对比总表已生成。")
         print(f"保存路径: {output_name}")
         print("="*70)
         print(pivot_df.to_string())
     else:
-        print("❌ 未生成任何数据。")
+        print("未生成任何数据。")
 
 if __name__ == "__main__":
     ONE_COL_DIR = 'check/one_col'
