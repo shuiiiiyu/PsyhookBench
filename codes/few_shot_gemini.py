@@ -13,24 +13,19 @@ from tqdm import tqdm
 from openai import OpenAI
 from qcloud_cos import CosConfig, CosS3Client
 
-# ===================== 0. Debug 控制 =====================
 PRINT_INVALID_DETAIL = True
 PRINT_EXCEPTION_DETAIL = True
 PRINT_RAW_PREVIEW_ON_PARSE_FAIL = True
 RAW_PREVIEW_CHARS = 600
-
-# ===================== 0. 增量写入（新增） =====================
 WRITE_EVERY_ROW = True       
 RESUME_IF_EXISTS = True         
-
-# ===================== 0. 速率限制（新增） =====================
 SLEEP_PER_ROW_SEC = 1.0       
 RATE_LIMIT_MAX_SLEEP = 60.0    
 RATE_LIMIT_BASE_SLEEP = 2.0   
 RATE_LIMIT_JITTER = 0.3       
 RATE_LIMIT_MAX_RETRY = 20    
 
-# ===================== 1. 路径与配置 =====================
+#路径与配置
 WORKSPACE_DIR = Path("TEST")
 TASK_CSV = "label_title_3005.csv"
 TITLE_LOOKUP_CSV = str(WORKSPACE_DIR / "label_title_3005.csv")
@@ -38,7 +33,7 @@ TITLE_LOOKUP_CSV = str(WORKSPACE_DIR / "label_title_3005.csv")
 RESULT_DIR = WORKSPACE_DIR / "ohmygpt_results"
 RESULT_DIR.mkdir(exist_ok=True, parents=True)
 
-# --- OhMyGPT 中转站配置 ---
+#OhMyGPT 中转站配置
 MODEL_NAME = "gemini-2.0-flash"   
 BASE_URL = "https://api.ohmygpt.com/v1"
 API_KEY = "sk-xxxx" 
@@ -56,7 +51,7 @@ COS_CONFIG = {
     'Region': 'xxxx',
     'Bucket': 'xxxx'
 }
-# ===================== 3. 提示词与案例 =====================
+#3. 提示词与案例
 BASE_HOOK_DEFINITIONS = r"""
 You are a social media content analyst. Analyze the following post (Title and Cover Image) for psychological hooks. 
 For each hook, output 1 if present, 0 if not.
@@ -222,7 +217,7 @@ HOOK_CASES = {
     ],
 }
 
-# ===================== 4. 工具函数 =====================
+#工具函数
 def get_cos_client():
     if not COS_CONFIG["SecretId"] or not COS_CONFIG["SecretKey"]:
         raise RuntimeError("请设置 COS_SECRET_ID / COS_SECRET_KEY 环境变量（或写死在 COS_CONFIG 里）")
@@ -422,7 +417,7 @@ def format_exception_detail(e: Exception) -> str:
             pass
     return " | ".join(parts)
 
-# ===================== 4.1 增量写入 CSV =====================
+#写入 CSV
 def load_done_post_ids(output_csv: Path) -> set:
     if (not output_csv.exists()) or output_csv.stat().st_size == 0:
         return set()
@@ -445,7 +440,7 @@ def write_one_row(writer, f_handle, rec: dict):
     writer.writerow(rec)
     f_handle.flush()
 
-# ===================== 5. 主流程 =====================
+#主流程
 def run_test():
     title_map = load_title_map(TITLE_LOOKUP_CSV)
     cases_block = build_cases_block(title_map)
@@ -633,8 +628,8 @@ def run_test():
     with open(RESULT_DIR / "stats.json", "w", encoding="utf-8") as f:
         json.dump(stats, f, ensure_ascii=False, indent=2)
 
-    print(f"\n✅ 完成！输出：{output_path}")
-    print(f"📊 调用总数 {total_model_calls} | 无效输出 {invalid_model_calls} | 无效率 {invalid_rate:.4%} | 已写入 {len(done)} 行")
+    print(f"\n完成！输出：{output_path}")
+    print(f"调用总数 {total_model_calls} | 无效输出 {invalid_model_calls} | 无效率 {invalid_rate:.4%} | 已写入 {len(done)} 行")
 
 if __name__ == "__main__":
     run_test()
