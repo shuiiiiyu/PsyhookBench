@@ -11,7 +11,7 @@ from io import StringIO
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-# ========= COS 配置 (保持原样) =========
+#COS 配置 (保持原样)
 SECRET_ID = 'xxxx'
 SECRET_KEY = 'xxxx'
 REGION = 'xxxx'
@@ -53,7 +53,7 @@ def get_post_detail(post_id):
     if row.empty: return "No Title", ""
     return str(row.iloc[0].get('title', 'No Title')), str(row.iloc[0].get('content', ''))
 
-# ========= 选项定义 (仅修正语法错误) =========
+#选项定义 (仅修正语法错误)
 question_types = [
     {
         "id": "1",
@@ -207,7 +207,6 @@ def view_item(idx):
     
     # 获取存过的数据
     post_data = annotations.get(post_id, {})
-    # 这里的 key 必须和 save_and_next 存入的时候一致
     saved_hooks = post_data.get('hook_scores', {})
     saved_ethics = post_data.get('ethics_scores', {})
 
