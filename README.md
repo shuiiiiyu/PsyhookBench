@@ -14,7 +14,7 @@ We provide two ways to interact with the dataset, depending on your needs:
     *Direct high-speed download from Tencent Cloud COS.*
 ---
 
-### 📂 Dataset Structure & Labels
+## 📂 Dataset Structure & Labels
 
 Our dataset categorizes psychological hooks into 8 core mechanisms based on social psychology:
 
@@ -29,7 +29,7 @@ Our dataset categorizes psychological hooks into 8 core mechanisms based on soci
 | 7 | **Social Comparison** | Relative status, gaps, and competition |
 | 8 | **Authority** | Expert endorsements and certifications |
 
-# File Organization
+### File Organization
 Once unzipped, the data is organized by `post_id`:
 ```text
 /dataset-img/
@@ -39,11 +39,6 @@ Once unzipped, the data is organized by `post_id`:
 │   │   └── metadata.json
 │   └── ...
 └── labeled_title_zeroshot.csv  # Mapping of post_id to 1-8 hook scores
-
-* **Live Portal:** [http://124.221.85.147:5001](http://124.221.85.147:5001)
-* **Features:** * Browse real-world social media captures.
-    * View multi-dimensional psychological labels (e.g., *Fear, Social Proof, Scarcity*).
-    * Examine the actual environment used by our human annotators.
       
 ## 📂 Repository Structure & Dataset Description
 
