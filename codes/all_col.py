@@ -5,13 +5,13 @@ from sklearn.metrics import f1_score, hamming_loss, accuracy_score
 
 def calculate_metrics(y_true, y_pred):
     """计算多标签分类的核心指标"""
-    # 1. EMR
+    #EMR
     emr = accuracy_score(y_true, y_pred)
-    # 2. 汉明损失
+    #汉明损失
     h_loss = hamming_loss(y_true, y_pred)
-    # 3. Macro-F1
+    #Macro-F1
     macro_f1 = f1_score(y_true, y_pred, average='macro', zero_division=0)
-    # 4. Micro-F1
+    #Micro-F1
     micro_f1 = f1_score(y_true, y_pred, average='micro', zero_division=0)
     
     return {
@@ -72,12 +72,12 @@ def run_batch_evaluation_all_pairs(check_status_folder, model_results_folder):
         df_master.to_csv(output_name, index=False, encoding='utf-8-sig')
         
         print("\n" + "="*80)
-        print(f"✅ 评估完成！汇总表包含所有模型与文件的对比。")
+        print(f"评估完成")
         print(f"文件保存至: {output_name}")
         print("="*80)
         print(df_master.head(20).to_string(index=False))
     else:
-        print("❌ 未生成任何有效数据，请检查文件 post_id 是否匹配或路径是否正确。")
+        print("未生成任何有效数据，请检查文件 post_id 是否匹配或路径是否正确。")
 
 if __name__ == "__main__":
     run_batch_evaluation_all_pairs('check_csvs_zeroshot', 'raw_data_results_zeroshot')
