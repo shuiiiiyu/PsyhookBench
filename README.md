@@ -7,8 +7,6 @@ If you require access to the full dataset, including the bucket ID and credentia
 
 📧 **Email:** [2351470@tongji.edu.cn](mailto:2351470@tongji.edu.cn)
 
-*Note: Access is provided for academic and research purposes only. Please include your affiliation and the purpose of your request in the email.*
-## 🔍 Image Exploration
 To respect your time and ensure data transparency, we provide an interactive web portal. You can browse representative samples without downloading the full dataset.
 
 * **Live Portal:** [http://124.221.85.147:5001](http://124.221.85.147:5001)
