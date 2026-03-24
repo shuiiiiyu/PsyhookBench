@@ -13,23 +13,18 @@ from tqdm import tqdm
 from openai import OpenAI
 from qcloud_cos import CosConfig, CosS3Client
 
-
-# ===================== 0. Debug 控制 =====================
 PRINT_INVALID_DETAIL = True
 PRINT_EXCEPTION_DETAIL = True
 PRINT_RAW_PREVIEW_ON_PARSE_FAIL = True
 RAW_PREVIEW_CHARS = 600
-
-# ===================== 0. 增量写入（新增） =====================
 WRITE_EVERY_ROW = True          
 RESUME_IF_EXISTS = True        
-# ===================== 0. 速率限制（新增） =====================
 SLEEP_PER_ROW_SEC = 0.0        
 RATE_LIMIT_MAX_SLEEP = 60.0     
 RATE_LIMIT_BASE_SLEEP = 2.0     
 RATE_LIMIT_JITTER = 0.3        
 RATE_LIMIT_MAX_RETRY = 20   
-# ===================== 1. 路径与配置 =====================
+
 WORKSPACE_DIR = Path(r"/data/shencanyu")
 TASK_CSV = r"/data/shencanyu/test/part_1.csv"
 TITLE_LOOKUP_CSV = str(WORKSPACE_DIR / "label_title.csv")
@@ -37,12 +32,10 @@ TITLE_LOOKUP_CSV = str(WORKSPACE_DIR / "label_title.csv")
 RESULT_DIR = WORKSPACE_DIR / "qwen2.5-vl-32b-instruct-zero"
 RESULT_DIR.mkdir(exist_ok=True, parents=True)
 
-# --- 阿里云 DashScope 兼容模式配置 ---
 MODEL_NAME = "qwen2.5-vl-32b-instruct"
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 API_KEY = "sk-xxxx" 
 
-# ===================== 2. 网络配置 =====================
 os.environ["NO_PROXY"] = "dashscope.aliyuncs.com"
 http_client = httpx.Client(trust_env=False, proxy=None, timeout=30.0)
 ai_client = OpenAI(api_key=API_KEY, base_url=BASE_URL, http_client=http_client)
@@ -54,7 +47,7 @@ COS_CONFIG = {
     'Bucket': 'xxxx'
 }
 
-# ===================== 3. 提示词（Zero-shot：不再拼接 hook_cases） =====================
+# 提示词（Zero-shot）
 BASE_HOOK_DEFINITIONS =  r"""
 
 You are a social media content analyst. Analyze the following post (Title and Cover Image) for psychological hooks. 
@@ -176,7 +169,7 @@ Return the results in JSON format. Ensure 'reasoning' comes FIRST,If you output 
 
 """
 
-# ===================== 4. 工具函数 =====================
+# 工具函数
 def get_cos_client():
     config = CosConfig(Region=COS_CONFIG['Region'], SecretId=COS_CONFIG['SecretId'], SecretKey=COS_CONFIG['SecretKey'])
     return CosS3Client(config)
@@ -307,7 +300,7 @@ def format_exception_detail(e: Exception) -> str:
             pass
     return " | ".join(parts)
 
-# ===================== 4.1 增量写入 CSV =====================
+# 增量写入 CSV
 def load_done_post_ids(output_csv: Path) -> set:
     if (not output_csv.exists()) or output_csv.stat().st_size == 0:
         return set()
@@ -331,7 +324,7 @@ def write_one_row(writer, f_handle, rec: dict):
     f_handle.flush()
 
 
-# ===================== 5. 主流程 =====================
+# 主流程
 def run_test():
     system_prompt = BASE_HOOK_DEFINITIONS
 
@@ -480,8 +473,8 @@ def run_test():
     with open(RESULT_DIR / "stats.json", "w", encoding="utf-8") as f:
         json.dump(stats, f, ensure_ascii=False, indent=2)
 
-    print(f"\n✅ 完成！输出：{output_path}")
-    print(f"📊 调用总数 {total_model_calls} | 无效输出 {invalid_model_calls} | 无效率 {invalid_rate:.4%} | 已写入 {len(done)} 行")
+    print(f"\n完成！输出：{output_path}")
+    print(f"调用总数 {total_model_calls} | 无效输出 {invalid_model_calls} | 无效率 {invalid_rate:.4%} | 已写入 {len(done)} 行")
 
 
 if __name__ == "__main__":
