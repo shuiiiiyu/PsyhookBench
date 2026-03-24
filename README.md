@@ -10,7 +10,7 @@ We provide two ways to interact with the dataset, depending on your needs:
 1.  **Interactive Explorer (Recommended)** [http://124.221.85.147:5000](http://124.221.85.147:5000)  
     *Browse the image-label pairs directly in your browser without downloading anything.*
 
-2.  **Full Dataset Download (ZIP)** [Download Full Dataset (30GB)](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset-img.zip)  
+2.  **Full Dataset Download (ZIP)** [Download Full Dataset](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset-img.zip)  
     *Direct high-speed download from Tencent Cloud COS.*
 ---
 
