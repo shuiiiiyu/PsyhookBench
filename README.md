@@ -29,7 +29,7 @@ Our dataset categorizes psychological hooks into 8 core mechanisms based on soci
 | 7 | **Social Comparison** | Relative status, gaps, and competition |
 | 8 | **Authority** | Expert endorsements and certifications |
 
-#### File Organization
+# File Organization
 Once unzipped, the data is organized by `post_id`:
 ```text
 /dataset-img/
@@ -39,8 +39,6 @@ Once unzipped, the data is organized by `post_id`:
 │   │   └── metadata.json
 │   └── ...
 └── labeled_title_zeroshot.csv  # Mapping of post_id to 1-8 hook scores
-
-To respect your time and ensure data transparency, we provide an interactive web portal. You can browse representative samples without downloading the full dataset.
 
 * **Live Portal:** [http://124.221.85.147:5001](http://124.221.85.147:5001)
 * **Features:** * Browse real-world social media captures.
