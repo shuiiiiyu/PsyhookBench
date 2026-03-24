@@ -72,12 +72,12 @@ def batch_evaluate_one_col_flat(one_col_dir, model_results_folder):
         df_final.to_csv(output_name, index=False, encoding='utf-8-sig')
         
         print("\n" + "="*70)
-        print(f"✅ 处理完成！已将所有组合结果写入大表。")
+        print(f"处理完成！已将所有组合结果写入大表。")
         print(f"文件路径: {output_name}")
         print("="*70)
         print(df_final.head(10).to_string(index=False))
     else:
-        print("❌ 未生成任何有效数据。")
+        print("未生成任何有效数据。")
 
 if __name__ == "__main__":
     ONE_COL_DIR = 'check_csvs_fewshot_/one_col'
