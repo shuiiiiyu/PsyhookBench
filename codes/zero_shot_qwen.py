@@ -32,7 +32,7 @@ TITLE_LOOKUP_CSV = str(WORKSPACE_DIR / "label_title.csv")
 RESULT_DIR = WORKSPACE_DIR / "qwen2.5-vl-32b-instruct-zero"
 RESULT_DIR.mkdir(exist_ok=True, parents=True)
 
-MODEL_NAME = "qwen2.5-vl-32b-instruct"
+MODEL_NAME = "qwen2.5-vl-32b-instruct" //可以改成阿里云上的其他模型，就可以跑别的模型的测试了
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 API_KEY = "sk-xxxx" 
 
