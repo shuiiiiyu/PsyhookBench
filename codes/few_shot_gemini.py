@@ -34,7 +34,7 @@ RESULT_DIR = WORKSPACE_DIR / "ohmygpt_results"
 RESULT_DIR.mkdir(exist_ok=True, parents=True)
 
 #OhMyGPT 中转站配置
-MODEL_NAME = "gemini-2.0-flash"   
+MODEL_NAME = "gemini-2.0-flash"   //模型名称改成其他模型就可以跑别的模型的测试了
 BASE_URL = "https://api.ohmygpt.com/v1"
 API_KEY = "sk-xxxx" 
 # ===================== 2. 网络配置 =====================
