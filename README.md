@@ -6,7 +6,6 @@ Our work has been submitted. For more comprehensive details, supplementary analy
 The **Appendix.pdf** includes the following peer-reviewed supplementary sections:
 
 #### 1. Detailed Operational Definitions
-A deep dive into the psychological theories (e.g., **McGuire’s motivational matrix**, **FOMO**, **Information-gap**) and the specific operationalization criteria used for human and model annotation.
 #### 2.Invalid Output Analysis
 #### 3.Performance Different Annotators
 #### 4.Annotation Platform Interface
