@@ -10,6 +10,7 @@ developing VLMs with enhanced social media content understanding.
   <img src="./intro_v3.png" width="90%" alt="PsyHookBench Overview">
   <br>
 </p>
+
 ## Appendix
 
 Our work has been submitted. For more comprehensive details, supplementary analyses, and extended experimental results, please refer to the [Appendix.pdf](./Appendix.pdf) available in this repository.
