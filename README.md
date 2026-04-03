@@ -9,7 +9,6 @@ developing VLMs with enhanced social media content understanding.
 <p align="center">
   <img src="./intro_v3.png" width="90%" alt="PsyHookBench Overview">
   <br>
-  <em>Figure 1: Overview of PsyHookBench, showcasing our taxonomy of eight psychological hooks, multimodal samples from social media, and the comprehensive evaluation pipeline for VLMs.</em>
 </p>
 ## Appendix
 
