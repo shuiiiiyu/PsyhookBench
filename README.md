@@ -1,7 +1,7 @@
 # PsyhookBench
 ## Appendix
 
-Our work has been submitted to **ACM Multimedia 2026**. For more comprehensive details, supplementary analyses, and extended experimental results, please refer to the [Appendix.pdf](./Appendix.pdf) available in this repository.
+Our work has been submitted. For more comprehensive details, supplementary analyses, and extended experimental results, please refer to the [Appendix.pdf](./Appendix.pdf) available in this repository.
 
 The **Appendix.pdf** includes the following peer-reviewed supplementary sections:
 
