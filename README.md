@@ -32,10 +32,10 @@ This project and the **PsyHookBench** dataset are licensed under the [Creative C
 
 **PsyHookBench** comprises **3,041** high-quality multimodal samples (cover images and titles) collected from **Xiaohongshu (Little Red Book)**. The dataset spans 10 vertical categories and is meticulously balanced across four key dimensions:
 
-* ** Modality:** A balanced distribution between text and image features.
-* ** Traffic Source:** Samples collected from both search queries and recommendation feeds.
-* ** Hook Complexity:** Covering both single-hook and composite-hook (multi-label) instances.
-* ** Annotation Difficulty:** Distinguishing between high-consensus samples and complex edge cases.
+* Modality: A balanced distribution between text and image features.
+* Traffic Source: Samples collected from both search queries and recommendation feeds.
+* Hook Complexity: Covering both single-hook and composite-hook (multi-label) instances.
+* Annotation Difficulty: Distinguishing between high-consensus samples and complex edge cases.
 
 ## 📂Repository Structure & Dataset Description
 
