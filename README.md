@@ -59,7 +59,7 @@ This folder contains the results of the Machine Ethics Audit.
 * **`risk_posts.csv`**: A subset of 391 samples identified by the model as potentially high-risk, flagged for manual human review.
 
 ### 3. Evaluation & Results
-* **`check_csvs_fewshot/` & `check_csvs_zeroshot/`**: Labeled data categorized by different dimensions. These are used to compare model outputs against the gold standard.
+* **`check_csvs_fewshot/` & `check_csvs_zeroshot/`**:  Ground truth categorized by different dimensions. These are used to compare model outputs against the gold standard.
 * **`DATA_SPLIT/`**: A small-scale, balanced subset provided for initial testing and prompt engineering/tuning.
 * **`raw_data_results_fewshot/` & `raw_data_results_zeroshot/`**: The raw inference outputs from various VLMs across both testing paradigms.
 * **`results/`**: Comprehensive evaluation reports comparing model outputs against the finalized labels (Metrics: Accuracy, F1-score, etc.).
