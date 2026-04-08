@@ -1,33 +1,12 @@
 # PsyHookBench: Benchmarking Vision-Language Models for Understanding Psychological Hooks
-## Introduction
+## 🚀Introduction
 This paper introduces **PsyHookBench**, a novel benchmark designed to evaluate **Vision Language Models' (VLMs)** understanding of psychological hooks—cognitive strategies used to capture attention on social media. We developed a taxonomy of eight hooks across three categories and curated a dataset of 3,041 high-engagement samples. Evaluations of 9 VLMs reveal significant performance gaps in edge cases and high-order psychological mechanisms, establishing a vital foundation for enhancing VLM comprehension of complex social media dynamics.
 <p align="center">
   <img src="./intro_v3.png" width="50%" alt="PsyHookBench Overview">
   <br>
 </p>
 
-## Appendix
-
-Our work has been submitted. For more comprehensive details, supplementary analyses, and extended experimental results, please refer to the [Appendix.pdf](./Appendix.pdf) available in this repository.
-
-The **Appendix.pdf** includes the following peer-reviewed supplementary sections:
-- [A: Operational Definitions](./Appendix/01.md)
-
-Comprehensive definitions of psychological hooks
-- [B: Dataset Construction](./Appendix/02.md)
-
-Detailed rules, platform UI, and annotation quality control
-- [C: Additional Experiments](./Appendix/03.md)
-
-Additional model performance metrics and analysis
-- [D: Dataset Statistics](./Appendix/04.md)
-
-detailed statistical distribution of our dataset
-- [E: Ethics and Related Work](./Appendix/05.md)
-
-Detailed related work and ethical considerations
-
-## Dataset Image Storage
+## 💾Dataset Image Storage
 
 All images related to this repository are hosted on a private **Tencent Cloud COS (Cloud Object Storage)** bucket to maintain repository performance and structure.
 
@@ -44,7 +23,7 @@ We provide two ways to interact with the dataset, depending on your needs:
     *The full ground-truth file mapping `post_id` to psychological hook scores (0-2).*
 ---
 
-## Dataset Structure & Labels
+## 🏷️Dataset Structure & Labels
 
 Our dataset categorizes psychological hooks into 8 core mechanisms based on social psychology:
 
@@ -59,7 +38,7 @@ Our dataset categorizes psychological hooks into 8 core mechanisms based on soci
 | 7 | **Social Comparison** | Relative status, gaps, and competition |
 | 8 | **Authority** | Expert endorsements and certifications |
       
-## Repository Structure & Dataset Description
+## 📂Repository Structure & Dataset Description
 
 All data files are organized within the `dataset/` directory. The benchmark consists of human-annotated ground truth, machine-labeled data, and ethical evaluation results.
 
@@ -104,3 +83,26 @@ The few-shot setting provides the model with $N$ examples (exemplars) within the
 
 * **Script:** `few_shot_gemini.py`
 * **Key Feature:** Utilizes in-context learning to improve classification accuracy for complex psychological categories like "FOMO" or "Information-gap."
+
+
+## 📑Supplementary Material (Appendix)
+
+Our work has been submitted. For more comprehensive details, supplementary analyses, and extended experimental results, please refer to the [Appendix.pdf](./Appendix.pdf) available in this repository.
+
+The **Appendix.pdf** includes the following peer-reviewed supplementary sections:
+- [A: Operational Definitions](./Appendix/01.md)
+
+Comprehensive definitions of psychological hooks
+- [B: Dataset Construction](./Appendix/02.md)
+
+Detailed rules, platform UI, and annotation quality control
+- [C: Additional Experiments](./Appendix/03.md)
+
+Additional model performance metrics and analysis
+- [D: Dataset Statistics](./Appendix/04.md)
+
+detailed statistical distribution of our dataset
+- [E: Ethics and Related Work](./Appendix/05.md)
+
+Detailed related work and ethical considerations
+
