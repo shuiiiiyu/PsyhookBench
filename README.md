@@ -12,15 +12,20 @@ Our work has been submitted. For more comprehensive details, supplementary analy
 
 The **Appendix.pdf** includes the following peer-reviewed supplementary sections:
 - [A: Operational Definitions](./Appendix/01.md)
-  Comprehensive definitions of psychological hooks
+
+Comprehensive definitions of psychological hooks
 - [B: Dataset Construction](./Appendix/02.md)
-  Detailed rules, platform UI, and annotation quality control
+
+Detailed rules, platform UI, and annotation quality control
 - [C: Additional Experiments](./Appendix/03.md)
-  Additional model performance metrics and analysis
+
+Additional model performance metrics and analysis
 - [D: Dataset Statistics](./Appendix/04.md)
-  detailed statistical distribution of our dataset
+
+detailed statistical distribution of our dataset
 - [E: Ethics and Related Work](./Appendix/05.md)
-  Detailed related work and ethical considerations
+
+Detailed related work and ethical considerations
 
 ## Dataset Image Storage
 
