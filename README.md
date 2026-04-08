@@ -11,11 +11,11 @@ This paper introduces **PsyHookBench**, a novel benchmark designed to evaluate *
 Our work has been submitted. For more comprehensive details, supplementary analyses, and extended experimental results, please refer to the [Appendix.pdf](./Appendix.pdf) available in this repository.
 
 The **Appendix.pdf** includes the following peer-reviewed supplementary sections:
-- [A: Operational Definitions](./appendix/Operational_Definitions.md)
-- [B: Dataset Construction](./appendix/Dataset_Construction.md)
-- [C: Additional Experiments](./appendix/Additional_Experiments.md)
-- [D: Dataset Statistics](./appendix/Dataset_Statistics.md)
-- [E: Ethics and Related Work](./appendix/Ethics_and_Related_Work.md)
+- [A: Operational Definitions](./appendix/01.md)*(Detailed rules, platform UI, and annotation quality control)*
+- [B: Dataset Construction](./appendix/02.md)*(In-depth statistical analysis and ethical considerations)*
+- [C: Additional Experiments](./appendix/03.md)*(Additional model performance metrics and analysis)*
+- [D: Dataset Statistics](./appendix/04.md)
+- [E: Ethics and Related Work](./appendix/05.md)
 
 ## Dataset Image Storage
 
