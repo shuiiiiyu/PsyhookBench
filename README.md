@@ -6,8 +6,15 @@ This paper introduces **PsyHookBench**, a novel benchmark designed to evaluate *
   <br>
 </p>
 
-## 💾Dataset Image Storage
+## 🧩Dataset Description
+**PsyHookBench** comprises **3,041** high-quality multimodal samples (cover images and titles) collected from **Xiaohongshu**. The dataset spans 10 vertical categories and is meticulously balanced across four key dimensions:
 
+* Modality: A balanced distribution between text and image features.
+* Traffic Source: Samples collected from both search queries and recommendation feeds.
+* Hook Complexity: Covering both single-hook and composite-hook (multi-label) instances.
+* Annotation Difficulty: Distinguishing between high-consensus samples and complex edge cases.
+
+## 💾Dataset Image Storage
 All images related to this repository are hosted on a private **Tencent Cloud COS (Cloud Object Storage)** bucket to maintain repository performance and structure.
 
 PsyHookBench is a multimodal benchmark containing over **30GB** of social media data, specifically designed to evaluate how Vision-Language Models (VLMs) understand psychological persuasion ("hooks").
@@ -23,19 +30,9 @@ We provide two ways to interact with the dataset, depending on your needs:
     *The full ground-truth file mapping `post_id` to psychological hook scores (0-2).*
 
 ## ⚖️License
-
 This project and the **PsyHookBench** dataset are licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-
-## 🧩Dataset Description
-
-**PsyHookBench** comprises **3,041** high-quality multimodal samples (cover images and titles) collected from **Xiaohongshu**. The dataset spans 10 vertical categories and is meticulously balanced across four key dimensions:
-
-* Modality: A balanced distribution between text and image features.
-* Traffic Source: Samples collected from both search queries and recommendation feeds.
-* Hook Complexity: Covering both single-hook and composite-hook (multi-label) instances.
-* Annotation Difficulty: Distinguishing between high-consensus samples and complex edge cases.
 
 ## 📂Repository Structure & Dataset Description
 
