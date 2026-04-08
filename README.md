@@ -1,13 +1,8 @@
 # PsyhookBench
 ## Introduction
-
-Psychological hooks—systematic cognitive strategies designed to
-capture attention and influence behavior—are fundamental to modern social media content, yet remain underexplored in Vision Language Models (VLMs). This paper introduces PsyHookBench,
-a novel benchmark for evaluating VLMs’ understanding of psychological hooks in multimodal social media. We propose a taxonomy of eight hooks across three motivational categories, construct a dataset of 3,041 high-engagement samples with reliable
-human-machine annotations, and conduct comprehensive evaluations across nine VLMs. Our results reveal significant performance degradation on edge cases, superior performance on composite hooks, and a watershed in recognizing high-order psychological mechanisms. PsyHookBench establishes a foundation for
-developing VLMs with enhanced social media content understanding.
+This paper introduces PsyHookBench, a novel benchmark designed to evaluate Vision Language Models' (VLMs) understanding of psychological hooks—cognitive strategies used to capture attention on social media. We developed a taxonomy of eight hooks across three categories and curated a dataset of 3,041 high-engagement samples. Evaluations of 9 VLMs reveal significant performance gaps in edge cases and high-order psychological mechanisms, establishing a vital foundation for enhancing VLM comprehension of complex social media dynamics.
 <p align="center">
-  <img src="./intro_v3.png" width="90%" alt="PsyHookBench Overview">
+  <img src="./intro_v3.png" width="60%" alt="PsyHookBench Overview">
   <br>
 </p>
 
