@@ -22,7 +22,7 @@ We provide two ways to interact with the dataset, depending on your needs:
 3.  **Complete Annotations (CSV):** [Download raw data and labeled data](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset_csv.zip)
     *The full ground-truth file mapping `post_id` to psychological hook scores (0-2).*
 
-## ⚖️ License
+## ⚖️License
 
 This project and the **PsyHookBench** dataset are licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
