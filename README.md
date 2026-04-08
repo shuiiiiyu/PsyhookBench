@@ -1,4 +1,4 @@
-# PsyhookBench
+# PsyHookBench: Benchmarking Vision-Language Models for Understanding Psychological Hooks
 ## Introduction
 This paper introduces **PsyHookBench**, a novel benchmark designed to evaluate **Vision Language Models' (VLMs)** understanding of psychological hooks—cognitive strategies used to capture attention on social media. We developed a taxonomy of eight hooks across three categories and curated a dataset of 3,041 high-engagement samples. Evaluations of 9 VLMs reveal significant performance gaps in edge cases and high-order psychological mechanisms, establishing a vital foundation for enhancing VLM comprehension of complex social media dynamics.
 <p align="center">
@@ -11,16 +11,12 @@ This paper introduces **PsyHookBench**, a novel benchmark designed to evaluate *
 Our work has been submitted. For more comprehensive details, supplementary analyses, and extended experimental results, please refer to the [Appendix.pdf](./Appendix.pdf) available in this repository.
 
 The **Appendix.pdf** includes the following peer-reviewed supplementary sections:
+- [A: Operational Definitions](./appendix/Operational_Definitions.md)
+- [B: Dataset Construction](./appendix/Dataset_Construction.md)
+- [C: Additional Experiments](./appendix/Additional_Experiments.md)
+- [D: Dataset Statistics](./appendix/Dataset_Statistics.md)
+- [E: Ethics and Related Work](./appendix/Ethics_and_Related_Work.md)
 
-#### 1. Detailed Operational Definitions
-#### 2.Invalid Output Analysis
-#### 3.Performance Different Annotators
-#### 4.Annotation Platform Interface
-#### 5.Model Performance Across Vertical Categories
-#### 6.Statistical Characterization of Psychological Hooks
-#### 7.Dataset Composition and Construction Details
-#### 8.Detailed Related Work Supplement
-#### 9.Definitions of Ethical Risks Detail
 ## Dataset Image Storage
 
 All images related to this repository are hosted on a private **Tencent Cloud COS (Cloud Object Storage)** bucket to maintain repository performance and structure.
