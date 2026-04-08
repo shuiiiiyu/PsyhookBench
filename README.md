@@ -70,7 +70,7 @@ This folder contains the results of the Machine Ethics Audit.
 
 ### 4. Data Collection
 * **`xiaohongshu_download/`**: Contains the crawler scripts and tools used to fetch the original social media data from Xiaohongshu.
-##  Model Evaluation (Zero-Shot & Few-Shot)
+## 🤖Model Evaluation (Zero-Shot & Few-Shot)
 
 We provide evaluation scripts for both **Zero-Shot** and **Few-Shot** testing. The implementation logic is standardized across models; therefore, we provide detailed examples using **Gemini** and **Qwen**. To test other supported models, you only need to modify the configuration section at the beginning of the respective scripts.
 
