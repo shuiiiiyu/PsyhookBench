@@ -1,0 +1,142 @@
+# Section A: Operational Definitions
+
+This section provides the formal definitions and operational judgment criteria for the eight psychological hooks categorized in PsyHookBench.
+
+---
+
+### FOMO
+
+Przybylski et al. described "fear of missing out" as a prevalent concern, specifically the worry that others might be experiencing beneficial events that one is not part of, characterized by a desire to continuously know what others are doing. In McGuire's motivational matrix, the tension reduction theory (dimension: stability-active-emotional state-internal relationship) depicts humans as an energy system that derives pleasure from the release of tension and feels pain from the increase of tension. Additionally, his utility theory (dimension: growth-reactive-cognitive state-internal relationship) emphasizes people's need to pursue maximum benefits at the lowest cost.
+
+Formally, content information cards that include the fear of missing out typically highlight the potential losses of missing out, arousing the audience's worries and increasing their tension. This thereby creates motivations such as tension reduction and cost minimization, which can be satisfied through clicking and further reading.
+
+**coredef**: The content expresses "if you don't do something, there will be certain consequences (losses / regrets)" to arouse the audience's concerns and increase tension.  
+**opjudge**: Does the content contain/convey: clues of "inaction" AND "costs" or "consequences" of "inaction"?
+
+* **Clues of "inaction":** Words like not watching / not listening / not doing / not acting.
+* **Costs and consequences:** Negative intentions such as bankruptcy, breakup, or failure.
+---
+
+## Gain Appeal
+
+As mentioned above, the **utility theory** in McGuire's motivational matrix describes how people derive satisfaction by maximizing benefits at the lowest cost. Meanwhile, his **assertion theory** (dimensions: growth-active-emotional state-external relationship) also emphasizes people's needs to enhance their abilities and pursue improvement.
+
+Formally, content information cards that include resource acquisition usually highlight the value that their information can bring, stimulating the audience's inherent motivation to acquire, thereby prompting clicks.
+
+> **Core Definition:** The content emphasizes "what benefits can be obtained through this content information" to stimulate the audience's inherent motivation to acquire.
+
+**Operational Judgment:** Does the content contain/convey the benefits that the content can bring?
+
+* **Benefits:** * **Money:** Saving or making money.
+    * **Time:** Improving efficiency.
+    * **Health:** Weight loss or beauty.
+    * **Skills:** Quick learning.
+    * **Emotions:** Happiness or peace.
+---
+
+## Information-gap
+
+Loewenstein proposed a new explanation of curiosity, interpreting it as a **cognitively induced sense of deprivation** that arises from people's perception of gaps in their knowledge or understanding. He also pointed out that Gestalt psychologists have long been among the strongest advocates of the view that "humans have a need to understand." In fact, the concept of "Gestalt" itself reflects the basic tendency of humans to understand information by organizing it into a coherent "whole." 
+
+Finally, he summarized five situational factors that may arouse this type of curiosity, which provide a direct reference for our operational definition:
+1. **Posing questions** (i.e., Berlyne's "thematic probes")
+2. **Predictable but unknown information**
+3. **Information inconsistency**
+4. **Information gaps between people**
+5. **Information gaps between the past and the present**
+
+The **stimulus theory** in McGuire's motivational matrix (dimension: growth-active-cognitive state-internal relationship) also describes people's need for exploration to a certain extent.
+
+Formally, content information cards containing information gaps can take many forms, which can be directly reflected in the title or the cover. The most common form is "thematic probes": posing questions and riddles to arouse the audience's curiosity and desire to fill in the gaps.
+
+> **Core Definition:** When the content could have fully conveyed information through the title or cover, it intentionally omits part of the information to guide the audience to click.
+
+**Operational Judgment:** Does the content create intentionally hidden information?
+
+* **Self-questioning and answering:** Raising a question in the title and answering it in the content.
+* **Obscuring information:** Using mosaics or stickers to cover key parts.
+* **Ambiguous reference:** Using words like "this" or "that" without clear referents.
+---
+
+## Anomaly and novelty
+
+Berlyne pointed out that the type of curiosity that enhances the perception of stimuli and the type of curiosity whose main outcome is knowledge are likely to prove to be closely related, namely the perceptual curiosity and cognitive curiosity he classified. Perceptual curiosity refers to a drive triggered by novel stimuli and diminished with continued exposure to these stimuli, which is consistent with the stimulus theory in McGuire's motivational matrix, emphasizing that people are curious novelty seekers and eager to avoid boredom. Cognitive curiosity refers to the desire for knowledge and is mainly applicable to humans.
+
+He believed that when studying cases of strange, unusual, and confusing things, it is necessary to use the variable of conflict for explanation, and attributed the curiosity aroused by such situations or problems to learned conflict. Berlyne also discussed some integrative stimulus characteristics, i.e., those stimuli that can arouse or induce curiosity drive. A stimulus can be in different positions on dimensions such as familiar-novel, expected-unexpected, simple-complex, clear-ambiguous, and other dimensions.
+
+The consistency theory (dimensions: stability-active-cognitive state-internal relations) in McGuire's motivational matrix also emphasizes that people strive to maintain an interconnected and coherent cognitive system. When there is any imbalance between one's own perceptions, memories, emotions, needs, behaviors, role commitments, cultural norms, etc., people will be driven to take action to reduce this imbalance. At the same time, the process of this action is also a process of seeking explanations and generating meanings, which is also driven by the motivation of hermeneutic theory (dimensions: stability-active-cognitive state-external relations).
+
+As Berlyne said, "associative variables" such as "novelty" and "complexity" depend on the comparison of stimulus characteristics, the organization of information from different sources, and the examination of similarities and differences. Therefore, here we operationally define "abnormality" and "novelty" in the psychological hook of abnormal novelty as whether the content author "packages" the content as abnormal or novel, rather than judging whether the content is really abnormal or novel for a certain audience.
+
+Therefore, formally, information cards containing abnormal novelty will directly claim or describe the content as surprising, beyond imagination, or rare and novel through some form of packaging.
+
+> **Core Definition:** Content is deliberately packaged to be astonishing, counterintuitive, rare, or novel to arouse curiosity.
+
+**Operational Judgment:** Does the content contain: phrases expressing astonishing abnormality OR rarity and novelty?
+
+* **Abnormality:** Phrases like "unexpectedly", "incredible", or "refreshing one's outlook".
+* **Rarity/Novelty:** Extreme words (most, top, epic-level) or scarcity words (only, limited, niche).
+---
+
+## Perceptual Contrast
+
+Rosch verified a hypothesis through experiments, which is: natural categories (such as colors, line directions, and numbers) have reference point stimuli (such as focal colors, vertical and horizontal lines, and numbers that are multiples of 10), and other stimuli in the category are judged with reference to these reference point stimuli. Earlier, other scholar proposed that in perceptual stimuli, there exist certain "ideal types" that act as anchors for perception. Therefore, when two or more completely different things or states are juxtaposed, they serve as a stimulus. This stimulus not only arouses people's need for classification (dimension: stability-reaction-cognitive state-internal relationship), that is, people will classify the received impressions into their already formed cognitive categories in complex situations, but also causes conflict and cognitive dissonance, stimulating the need for consistency and the need for explanation in McGuire's motivational matrix.
+
+Formally, information cards containing perceptual contrast will use some kind of contrast (this contrast is inherently anchored) through image contrast, semantic contrast, or a mixed method (i.e., contrast between images and semantics) to arouse the audience's curiosity to "find out more".
+
+> **Core Definition:** Content places two or more contrasting states or things together visually or textually to stimulate desire to explore.
+
+**Operational Judgment:** Does the content contain/convey: two or more contrasting items with obvious differences?
+
+* **Contrasting items:** Front and back, positive and negative, expectation vs. reality.
+* **Forms:** Semantic contrast in text, visual contrast in images, or text-image contrast.
+---
+
+## Ingroup Identification / Outgroup Distinction
+
+Intergroup categorization networks are ubiquitous in social environments; they permeate our socialization and educational processes, from "teams" and "team spirit" in primary and secondary schools, to various adolescent groups, and further to social, national, ethnic, racial, religious, or age groups. The identity theory (dimension: growth-reactive-emotional state-internal relationship) in McGuire's motivational matrix integrates perspectives from multiple schools of thought, emphasizing that individuals can elaborate on their self-awareness and gain satisfaction through social roles and group belonging.
+
+In the process of group belonging and identification, it may also be influenced by how people divide groups based on the template theory in their own cognition, how people make inductive judgments through certain behaviors, and how people are "infected" and synchronized by others. These points correspond respectively to the template theory (dimension: growth-reactive-cognitive state-external relationship), induction theory (dimension: stability-reactive-cognitive state-external relationship), and infection theory (dimension: growth-reactive-emotional state-external relationship) in McGuire's motivational matrix.
+
+In addition, Tajfel H et al. also described the competition and conflict between ingroups and outgroups, pointing out that these two forms of intergroup conflict are in a complex interdependent relationship and reinforce each other.
+
+Therefore, formally speaking, information cards containing group identity will first display group labels in some way, thereby arousing ingroup identity or creating teasing or exclusion of outgroups.
+
+> **Core Definition:** Content uses group labels to arouse a sense of identity and belonging; or to arouse rejection and ridicule towards a certain group.
+
+**Operational Judgment:** Does it contain group labels AND (display attitudes of belonging/rejection OR calls to action OR group commonalities)?
+
+* **Group Labels:** Nouns related to race, country, religion, age, gender, occupation, or MBTI tags.
+* **Attitudes/Actions:** Showing pride or empathy; disdain or satire; calls like "like if you are...".
+---
+
+## Social Comparison
+
+Blanton et al. pointed out that social comparison has multiple functions, and people will change their comparison strategies according to their current motivations. Specifically, when people face threats to their self-esteem that cannot be resolved through instrumental actions, they will seek to compare themselves with those who are in a worse situation; when they face threats that they can cope with and the desire for self-improvement prevails, they will seek upward comparisons. The assertion theory in McGuire's motivational matrix also emphasizes people's competitive instinct and the need to gain a sense of superiority and dominance; his self-defense theory (dimension: stability-reaction-emotional state-internal relationship) emphasizes the necessity for people to maintain self-esteem.
+
+Gibbons F.X. and Buunk B.P. pointed out that although social comparison is automatic, meaning that almost everyone engages in social comparison from time to time, it is also situational. For most people, situations that foster competition may arouse their interest in social comparison, and uncertain or threatening situations will also increase individuals' tendency to engage in social comparison.
+
+Formally, information cards containing social comparison will create situations that stimulate social comparison (such as showing differences in social resources, directly using comparison-related words, etc.) or trigger the audience to participate in comparison by displaying attitudes after upward/downward comparisons.
+
+> **Core Definition:** Content triggers the audience to engage in comparison by using comparative words, showing gaps and displaying certain attitudes.
+
+**Operational Judgment:** Are there obvious comparative action words OR (display of gaps AND display of attitudes)?
+
+* **Action words:** "than...", "VS", "not as good as...", "crush".
+* **Gaps:** Ability gaps (achievements), self-trait gaps (appearance), or resource gaps (wealth).
+* **Attitudes:** Upward (jealousy vs. motivation) or Downward (showing off vs. contentment).
+---
+## Authority Endorsement
+
+According to the template theory in McGuire's motivational matrix, the authoritative role template provides a paradigm for behaviors or beliefs. Meanwhile, the assertion theory emphasizes people's desire for self-improvement. "Gladiators" will admire and imitate the strong, and this imitation, to a certain extent, aligns with the satisfaction gained through social learning as emphasized by the contagion theory.
+
+Therefore, formally speaking, information cards containing authoritative endorsement will use various powerful source endorsements to exempt the audience from the cost of questioning, thereby making the audience convinced and even imitating.
+
+> **Core Definition:** Content uses various persuasive source endorsements to exempt the audience from questioning costs, guiding them to be convinced.
+
+**Operational Judgment:** Does the content contain: source endorsement?
+
+* **Authoritative sources:** Experts, institutions, celebrities, rankings, or certifications (e.g., FDA, Harvard research).
+* **Social proof:** Numbers such as "220,000 people have viewed...".
+---
+[Back to README](../README.md)
