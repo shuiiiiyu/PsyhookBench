@@ -28,7 +28,7 @@ This project and the **PsyHookBench** dataset are licensed under the [Creative C
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-## 🧩 Dataset Description
+## 🧩Dataset Description
 
 **PsyHookBench** comprises **3,041** high-quality multimodal samples (cover images and titles) collected from **Xiaohongshu**. The dataset spans 10 vertical categories and is meticulously balanced across four key dimensions:
 
