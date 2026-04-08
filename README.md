@@ -21,22 +21,12 @@ We provide two ways to interact with the dataset, depending on your needs:
     *Direct high-speed download from Tencent Cloud COS.*
 3.  **Complete Annotations (CSV):** [Download raw data and labeled data](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset_csv.zip)
     *The full ground-truth file mapping `post_id` to psychological hook scores (0-2).*
----
 
-## 🏷️Dataset Structure & Labels
+## ⚖️ License
 
-Our dataset categorizes psychological hooks into 8 core mechanisms based on social psychology:
+This project and the **PsyHookBench** dataset are licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-| ID | Hook Mechanism | Description |
-| :--- | :--- | :--- |
-| 1 | **FOMO** | Fear of Missing Out / Loss Aversion |
-| 2 | **Gain Appeal** | Emphasizing benefits, efficiency, or rewards |
-| 3 | **Information-gap** | Creating curiosity through intentional omission |
-| 4 | **Anomaly & Novelty** | Counterintuitive or rare content |
-| 5 | **Perceptual Contrast** | Visual or textual "Before vs. After" |
-| 6 | **Ingroup/Outgroup** | Social identity and group belonging |
-| 7 | **Social Comparison** | Relative status, gaps, and competition |
-| 8 | **Authority** | Expert endorsements and certifications |
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
       
 ## 📂Repository Structure & Dataset Description
 
