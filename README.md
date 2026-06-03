@@ -21,12 +21,9 @@ PsyHookBench is a multimodal benchmark containing over **30GB** of social media 
 
 We provide two ways to interact with the dataset, depending on your needs:
 
-1.  **Interactive Explorer (Recommended)** [http://124.221.85.147:5000](http://124.221.85.147:5000)  
-    *Browse the image-label pairs directly in your browser without downloading anything.*
-
-2.  **Full Dataset Download (ZIP)** [Download full dataset image](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset-img.zip)  
+1.  **Full Dataset Images Download (ZIP)** [Download full dataset image](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset-img.zip)  
     *Direct high-speed download from Tencent Cloud COS.*
-3.  **Complete Annotations (CSV):** [Download raw data and labeled data](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset_csv.zip)
+2.  **Complete Annotations (CSV):** [Download raw data and labeled data](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset_csv.zip)
     *The full ground-truth file mapping `post_id` to psychological hook scores (0-2).*
 
 ## ⚖️License
