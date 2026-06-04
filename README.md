@@ -21,7 +21,6 @@ PsyHookBench is a multimodal benchmark containing over **30GB** of social media 
 
 We provide two ways to interact with the dataset, depending on your needs:
 1.  **Rapid Exploration(Recommend)** [Online viewing of dataset contents and labels](http://124.221.85.147:5000)
-   
     *This link is a preview link, not a download link.*
 2.  **Full Dataset Images Download (ZIP)** [Download full dataset image](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset-img.zip)  
     *Direct high-speed download from Tencent Cloud COS.*
