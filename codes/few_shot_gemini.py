@@ -156,6 +156,13 @@ hook8: Authority Endorsement
 3. INDEPENDENT JUDGMENT: The [Reference Examples] provided below are for reference and reasoning logic understanding ONLY. Judge the target post independently based on its own content.
 4. Definitions是最重要的，记得以看定义为主，参考样本仅辅助作用
 
+[Thought Process required]
+Before making a decision, you MUST:
+1. Identify visual elements in the image (stickers, mosaics, layout).
+2. Analyze the semantic intent of the title.
+3. Combine them to consider the author's creative intent.
+4. Compare them with the core definitions.
+
 [Json Output Format]
 Return ONLY ONE valid JSON object (no markdown, no ```).
 Keys MUST appear in this exact order. All h1~h8 MUST be 0 or 1.
