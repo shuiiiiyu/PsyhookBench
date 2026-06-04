@@ -20,10 +20,11 @@ All images related to this repository are hosted on a private **Tencent Cloud CO
 PsyHookBench is a multimodal benchmark containing over **30GB** of social media data, specifically designed to evaluate how Vision-Language Models (VLMs) understand psychological persuasion ("hooks").
 
 We provide two ways to interact with the dataset, depending on your needs:
-
-1.  **Full Dataset Images Download (ZIP)** [Download full dataset image](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset-img.zip)  
+1.  **Rapid Exploration(Recommend)** [Online viewing of dataset contents and labels](http://124.221.85.147:5000)
+    *This link is a preview link, not a download link.*
+2.  **Full Dataset Images Download (ZIP)** [Download full dataset image](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset-img.zip)  
     *Direct high-speed download from Tencent Cloud COS.*
-2.  **Complete Annotations (CSV):** [Download raw data and labeled data](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset_csv.zip)
+3.  **Complete Annotations (CSV):** [Download raw data and labeled data](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset_csv.zip)
     *The full ground-truth file mapping `post_id` to psychological hook scores (0-2).*
 
 ## ⚖️License
