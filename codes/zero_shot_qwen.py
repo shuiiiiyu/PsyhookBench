@@ -148,9 +148,10 @@ hook8: Authority Endorsement
 注意：凡是能增加可信度的线索都在范围内，先标注起来比漏标要好。
 
 [Note] 
-1. First, find reasons to label it as 1; only if no clues exist, label it as 0.
-2. INDEPENDENT JUDGMENT: Judge the target post independently based on its own content.
-
+1. We are in the discovery phase. If a post shows even a slight tendency or subtle hint of a hook, please lean towards labeling it as 1.
+2. First, find reasons to label it as 1; only if no clues exist, label it as 0.
+3. INDEPENDENT JUDGMENT: The [Reference Examples] provided below are for reference and reasoning logic understanding ONLY. Judge the target post independently based on its own content.
+4. Definitions是最重要的，记得以看定义为主，参考样本仅辅助作用
 
 [Thought Process required]
 Before making a decision, you MUST:
