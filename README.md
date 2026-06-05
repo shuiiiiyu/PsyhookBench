@@ -1,6 +1,7 @@
 # PsyHookBench: Benchmarking Vision-Language Models for Understanding Psychological Hooks
 ## ⚠️ Dual-Use Risk & Usage Agreement
 PsyHookBench is dedicated to AI Safety and Cognitive Alignment. To prevent the misuse of psychological hooks for generating deceptive clickbait or malicious manipulation, this dataset is released under a strict Acceptable Use Policy (AUP). By accessing the data, you agree NOT to use it for malicious Natural Language Generation (NLG) or targeted manipulation.
+## Please go to https://github.com/shuiiiiyu/PsyHookAppendix for the latest Appendix.
 ## 🚀Introduction
 This paper introduces **PsyHookBench**, a novel benchmark designed to evaluate **Vision Language Models' (VLMs)** understanding of psychological hooks—cognitive strategies used to capture attention on social media. We developed a taxonomy of eight hooks across three categories and curated a dataset of 3,041 high-engagement samples. Evaluations of 9 VLMs reveal significant performance gaps in edge cases and high-order psychological mechanisms, establishing a vital foundation for enhancing VLM comprehension of complex social media dynamics.
 <p align="center">
@@ -8,7 +9,6 @@ This paper introduces **PsyHookBench**, a novel benchmark designed to evaluate *
   <br>
 </p>
 
-# Please go to https://github.com/shuiiiiyu/PsyHookAppendix for the latest Appendix.
 ## 🧩Dataset Description
 **PsyHookBench** comprises **3,041** high-quality multimodal samples (cover images and titles) collected from **Xiaohongshu**. The dataset spans 10 vertical categories and is meticulously balanced across four key dimensions:
 
