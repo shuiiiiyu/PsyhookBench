@@ -5,7 +5,7 @@ This paper introduces **PsyHookBench**, a novel benchmark designed to evaluate *
   <img src="./definition_v3.png" width="90%" alt="PsyHookBench Overview">
   <br>
 </p>
-
+# Please go to https://github.com/shuiiiiyu/PsyHookAppendix for the latest Appendix.
 ## 🧩Dataset Description
 **PsyHookBench** comprises **3,041** high-quality multimodal samples (cover images and titles) collected from **Xiaohongshu**. The dataset spans 10 vertical categories and is meticulously balanced across four key dimensions:
 
