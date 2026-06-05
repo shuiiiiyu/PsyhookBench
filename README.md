@@ -1,4 +1,6 @@
 # PsyHookBench: Benchmarking Vision-Language Models for Understanding Psychological Hooks
+## ⚠️ Dual-Use Risk & Usage Agreement
+PsyHookBench is dedicated to AI Safety and Cognitive Alignment. To prevent the misuse of psychological hooks for generating deceptive clickbait or malicious manipulation, this dataset is released under a strict Acceptable Use Policy (AUP). By accessing the data, you agree NOT to use it for malicious Natural Language Generation (NLG) or targeted manipulation.
 ## 🚀Introduction
 This paper introduces **PsyHookBench**, a novel benchmark designed to evaluate **Vision Language Models' (VLMs)** understanding of psychological hooks—cognitive strategies used to capture attention on social media. We developed a taxonomy of eight hooks across three categories and curated a dataset of 3,041 high-engagement samples. Evaluations of 9 VLMs reveal significant performance gaps in edge cases and high-order psychological mechanisms, establishing a vital foundation for enhancing VLM comprehension of complex social media dynamics.
 <p align="center">
@@ -28,10 +30,13 @@ We provide two ways to interact with the dataset, depending on your needs:
 3.  **Complete Annotations (CSV):** [Download raw data and labeled data](https://shuiiiiyu-1390064103.cos.ap-shanghai.myqcloud.com/dataset_csv.zip)
     *The full ground-truth file mapping `post_id` to psychological hook scores (0-2).*
 
-## ⚖️License
-This project and the **PsyHookBench** dataset are licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+## ⚖️ License
+The **PsyHookBench** dataset is released under the
+[Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+In addition, all users must comply with the restrictions and acceptable-use requirements specified in the repository's `LICENSE` file. By accessing, downloading, or using this dataset, you agree to these additional terms.
+
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
 ## 📂Repository Structure & Dataset Description
 
