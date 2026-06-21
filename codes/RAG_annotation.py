@@ -12,7 +12,6 @@ import cn_clip.clip as clip
 from cn_clip.clip.utils import load_from_name
 from modelscope.hub.snapshot_download import snapshot_download
 
-# ===================== 1. 核心路径与配置 =====================
 GOLDEN_LABEL_CSV = "postid.csv"
 GOLDEN_TITLE_CSV = "541_raw_data.csv"
 TASK_CSV = "2500_raw_data.csv"
@@ -38,7 +37,6 @@ COS_CONFIG = {
 
 IMAGE_CACHE = {}
 
-# ===================== 2. 提示词模块：保持上一版 2 种向量库代码原样 =====================
 BASE_HOOK_DEFINITIONS = """
 You are a social media content analyst. Analyze the following post (Title and Cover Image) for psychological hooks. 
 For each hook, output 1 if present, 0 if not.
@@ -166,7 +164,6 @@ Return the results in JSON format. Ensure 'reasoning' comes FIRST:
   "h1":0/1, "h2":0/1, "h3":0/1, "h4":0/1, "h5":0/1, "h6":0/1, "h7":0/1, "h8":0/1
 }"""
 
-# ===================== 3. 工具函数 =====================
 def clean_id(x):
     return str(x).strip().lower()
 
@@ -358,7 +355,7 @@ def run_pipeline():
 
             for group in groups_config:
                 try:
-                    # RAG 检索：保持上一版逻辑，每组对应不同 text/image 权重和不同向量库
+                    # RAG 检索
                     w_t, w_i = group["weight"]
                     q_vec = (w_t * t_feat + w_i * i_feat)
                     q_vec /= q_vec.norm(dim=-1, keepdim=True)
@@ -418,12 +415,12 @@ def run_pipeline():
                     invalid_outputs += 1
                     append_reason(audit_data, pid, r, group['name'], f"ERROR: {e}")
 
-    # C. 生成详细汇总表：与 5 轮投票版一致
+    # 生成详细汇总表
     df_audit = pd.DataFrame(list(audit_data.values()))
     df_audit = pd.merge(df_task, df_audit, on='post_id', how='left')
     df_audit.to_csv(RESULT_DIR / "full_consensus_audit_raw.csv", index=False, encoding='utf-8-sig')
 
-    # D. 根据票数规则生成 8 个 Hook 专用复核表：与 5 轮投票版一致
+    # 根据票数规则生成 8 个 Hook 专用复核表
     print("📊 正在生成差异化复核清单...")
 
     RULES = {
