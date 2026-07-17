@@ -15,12 +15,11 @@ from modelscope.hub.snapshot_download import snapshot_download
 GOLDEN_LABEL_CSV = "postid.csv"
 GOLDEN_TITLE_CSV = "541_raw_data.csv"
 TASK_CSV = "2500_raw_data.csv"
-EXPERT_CSV = "expert_543.csv"  # 本版不强制生成效度报告，仅保留路径
+EXPERT_CSV = "expert_543.csv"
 
 WORKSPACE_DIR = Path("WORKSPACE")
 WORKSPACE_DIR.mkdir(parents=True, exist_ok=True)
 
-# 按“5轮投票版”的输出形式，生成 full_consensus_audit_raw.csv + REVIEW_NEEDED_h*.csv
 RESULT_DIR = WORKSPACE_DIR / "results_300_5"
 RESULT_DIR.mkdir(exist_ok=True, parents=True)
 
@@ -450,7 +449,7 @@ def run_pipeline():
     print("-" * 30)
     print(f"总模型调用次数: {total_calls}")
     print(f"异常/失败调用次数: {invalid_outputs}")
-    print(f"✅ 所有流程完成！请在 {RESULT_DIR} 查看 full_consensus_audit_raw.csv 和 Hook 专用复核表。")
+    print(f"所有流程完成！请在 {RESULT_DIR} 查看 full_consensus_audit_raw.csv 和 Hook 专用复核表。")
     if generated_review_files:
         print("已生成复核表：")
         for f in generated_review_files:
